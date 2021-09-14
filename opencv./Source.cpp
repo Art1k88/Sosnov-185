@@ -1,34 +1,34 @@
-#include "opencv2/highgui/highgui.hpp"
-#include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/highgui/highgui.hpp" //определяет кросс-платформенные функции взаимодействия с оконной системой
+#include "opencv2/imgproc/imgproc.hpp" //определяет основные/традиционные функции цифровой обработки изображений: отрисовка кривых и тому подобное
 
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream> //заголовочный файл с классами, функциями и переменными для организации ввода-вывода в языке программирования C++
+#include <stdio.h> //стандартный заголовочный файл ввода-вывода заголовочный файл стандартной библиотеки языка Си
+#include <stdlib.h> //заголовочный файл стандартной библиотеки языка Си
 
-using namespace cv;
-using namespace std;
+using namespace cv; //директива позволяет использовать все имена в namespace для использования без имени пространства имен в качестве явного квалификатора
+using namespace std; //сообщает компилятору, что мы хотим использовать всё, что находится в пространстве имен std
 
 
-int main(int argc, char** argv)
+int main(int argc, char** argv) //целочисленный параметр, содержащий количество аргументов, переданных в программу
 {
 
-	int height = 520;
-	int width = 840;
-	Mat img(height, width, CV_8UC3);
+	int height = 520; //Ширина
+	int width = 840; //Высота
+	Mat img(height, width, CV_8UC3); //Создание изображения
 
-		Point textOrg(100, img.rows / 2);
-		int fontFace = FONT_HERSHEY_SCRIPT_SIMPLEX;
-		double fontScale = 2;
-		Scalar color(200, 100, 50);
-			putText(img, "OpenCV step By Step", textOrg, fontFace, fontScale, color);
+		Point textOrg(100, img.rows / 2); //Местоположение
+		int fontFace = FONT_HERSHEY_SCRIPT_SIMPLEX; //Фонт
+		double fontScale = 2; //Его масштаб, размер
+		Scalar color(200, 100, 50); //Цвет текста
+			putText(img, "OpenCV step By Step", textOrg, fontFace, fontScale, color); 
 			
-			imshow("Hello World", img);
+			imshow("Hello World", img); //отображает полутоновое изображение I, указывая диапазон отображения как двухэлементный вектор, [low high]
 			
 			//	
-			setlocale(LC_ALL, "Russian");
-			char filename[80]; // read.jpg// string
-			cout <<"Введите имя файла, в который хотитие внести изменения, и нажмите Enter"<<end;
-			cin.getline(filename,80);
+			setlocale(LC_ALL, "Russian"); //устанавливает локальную информацию
+			char filename[80]; // read.jpg// string //это указатель, ссылающийся на си-строку и в отношении которых компилятор не допустит кода, меняющего значение этой строки посредством этого указателя
+			cout <<"Введите имя файла, в который хотитие внести изменения, и нажмите Enter"<<end; //Для отображения данных в консоли
+			cin.getline(filename,80); //предназначена для ввода данных из потока, например, для ввода данных из консольного окна
 			cout<<"Открыт файл";
 			cout <<filename<<end;
 	
