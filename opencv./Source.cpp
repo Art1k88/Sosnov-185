@@ -12,35 +12,35 @@ using namespace std; //сообщает компилятору, что мы хо
 int main(int argc, char** argv) //целочисленный параметр, содержащий количество аргументов, переданных в программу
 {
 
-	int height = 520; //Ширина
-	int width = 840; //Высота
-	Mat img(height, width, CV_8UC3); //Создание изображения
+	//int height = 520; //Ширина
+	//int width = 840; //Высота
+	//Mat img(height, width, CV_8UC3); //Создание изображения
 
-		Point textOrg(100, img.rows / 2); //Местоположение
-		int fontFace = FONT_HERSHEY_SCRIPT_SIMPLEX; //Фонт
-		double fontScale = 2; //Его масштаб, размер
-		Scalar color(200, 100, 50); //Цвет текста
-			putText(img, "OpenCV step By Step", textOrg, fontFace, fontScale, color); 
-			
-			imshow("Hello World", img); //отображает полутоновое изображение I, указывая диапазон отображения как двухэлементный вектор, [low high]
-			
-			//	
-			setlocale(LC_ALL, "Russian"); //устанавливает локальную информацию
-			char filename[80]; // read.jpg// string //это указатель, ссылающийся на си-строку и в отношении которых компилятор не допустит кода, меняющего значение этой строки посредством этого указателя
-			cout <<"Введите имя файла, в который хотитие внести изменения, и нажмите Enter"<<end; //Для отображения данных в консоли
-			cin.getline(filename,80); //предназначена для ввода данных из потока, например, для ввода данных из консольного окна
-			cout<<"Открыт файл";
-			cout <<filename<<end;
-	
-				
-	
-			Mat imgt = imread("read.jpg", 1);
-			imshow("Load", imgt);
-			waitKey(0);
-			system("pause");
+	//Point textOrg(100, img.rows / 2); //Местоположение
+	//int fontFace = FONT_HERSHEY_SCRIPT_SIMPLEX; //Фонт
+	//double fontScale = 2; //Его масштаб, размер
+	//Scalar color(200, 100, 50); //Цвет текста
+	//putText(img, "OpenCV step By Step", textOrg, fontFace, fontScale, color);
 
-			return 0;
-		
+	//imshow("Hello World", img); //отображает полутоновое изображение I, указывая диапазон отображения как двухэлементный вектор, [low high]
+
+	////	
+	setlocale(LC_ALL, "Russian"); //устанавливает локальную информацию
+	char filename[80]; // read.jpg// string //это указатель, ссылающийся на си-строку и в отношении которых компилятор не допустит кода, меняющего значение этой строки посредством этого указателя
+	cout << "Введите имя файла, в который хотитие внести изменения, и нажмите Enter" << endl; //Для отображения данных в консоли
+	cin.getline(filename, 80); //предназначена для ввода данных из потока, например, для ввода данных из консольного окна
+	cout << "Открыт файл";
+	cout << filename << endl;
+
+
+
+	Mat imgt = imread(filename, 1);
+	imshow("Load", imgt);
+	waitKey(0);
+	system("pause");
+
+	return 0;
+
 }
 
 
