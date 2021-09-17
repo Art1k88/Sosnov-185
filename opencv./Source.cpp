@@ -26,16 +26,34 @@ int main(int argc, char** argv) //целочисленный параметр, �
 
 	////	
 	setlocale(LC_ALL, "Russian"); //устанавливает локальную информацию
-	char filename[80]; // read.jpg// string //это указатель, ссылающийся на си-строку и в отношении которых компилятор не допустит кода, меняющего значение этой строки посредством этого указателя
+	char filename[80]; // 1.jpg// string //это указатель, ссылающийся на си-строку и в отношении которых компилятор не допустит кода, меняющего значение этой строки посредством этого указателя
 	cout << "Введите имя файла, в который хотитие внести изменения, и нажмите Enter" << endl; //Для отображения данных в консоли
 	cin.getline(filename, 80); //предназначена для ввода данных из потока, например, для ввода данных из консольного окна
 	cout << "Открыт файл";
 	cout << filename << endl;
+	Mat img = imread(filename, 1);
+	namedWindow("Load", WINDOW_AUTOSIZE); 
+		imshow("Load", img);
+	Mat src_gray; Mat canny_output; Mat _img; 
+	cvtColor(img, src_gray, COLOR_RGB2GRAY);
+	imwrite("Серое изображение.jpg", src_gray);
+	blur(src_gray, src_gray, Size(5, 5));
+	imwrite("Размытое изображение.jpg", src_gray);
+
+	double utsu_thresh_val = threshold(src_gray, _img, 0, 255, THRESH_BINARY |
+		THRESH_OTSU);
+	double high_tresh_val = utsu_thresh_val, lower_thresh_val = utsu_thresh_val *
+		0.5;
+	cout << utsu_thresh_val;
+	Canny(src_gray, canny_output, lower_thresh_val, high_tresh_val, 3);
+
+	
+	namedWindow("Серое изображение", WINDOW_AUTOSIZE);
+	imshow("Серое изображение", canny_output);
+	imwrite("canny_output.jpg", canny_output);
 
 
-
-	Mat imgt = imread(filename, 1);
-	imshow("Load", imgt);
+	
 	waitKey(0);
 	system("pause");
 
